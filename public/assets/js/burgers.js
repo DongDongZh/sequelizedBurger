@@ -3,7 +3,8 @@ $(function() {
   $(".change-devoured").on("click", function(event) {
     var id = $(this).data("id");
     var newDevoured = !($(this).data("oldDevoured"));
-
+    console.log(newDevoured);
+    
     var devouredState = {
       devoured: newDevoured
     };
@@ -15,6 +16,7 @@ $(function() {
     }).then(
       function() {
         console.log("changed devoured to", newDevoured);
+        // console.log(devouredState);
         // Reload the page to get the updated list
         location.reload();
       }
@@ -34,8 +36,10 @@ $(function() {
       type: "POST",
       data: newBurger
     }).then(
-      function() {
+      function(result) {
         console.log("created new burger");
+        console.log(result);
+        
         // Reload the page to get the updated list
         location.reload();
       }
